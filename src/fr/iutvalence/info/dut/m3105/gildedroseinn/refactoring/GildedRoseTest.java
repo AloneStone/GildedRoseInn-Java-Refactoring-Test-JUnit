@@ -21,7 +21,7 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
-	/**@Test
+	@Test
 	public void EachDayCheckTheQuality() {
 		
 		
@@ -47,7 +47,7 @@ public class GildedRoseTest {
 		assertEquals(items5.getSellIn() ,14);
 		assertEquals(items6.getSellIn() ,2 );
 	}
-	*/
+	
 	@Test
 	public void ifSellInIsInferiorAt0() {
 		
@@ -74,4 +74,31 @@ public class GildedRoseTest {
 		assertEquals(items6.getQuality() ,4 );
 		
 	}
+	
+	@Test
+	public void whenQulityIsSuperiorOrEqualsAtZero(){
+		
+		Item items1 = new Item("+5 Dexterity Vest", -1, 20);
+		Item items2 = new Item("Aged Brie", -2, 0);
+		Item items3 = new Item("Elixir of the Mongoose", -5, 7);
+		Item items4 = new Item("Sulfuras, Hand of Ragnaros", -10, 80);
+		Item items5 = new Item("Backstage passes to a TAFKAL80ETC concert", -15, 20);
+		Item items6 = new Item("Conjured Mana Cake", -3, 6);
+		
+		for (int nbDays =0 ; nbDays < 100; nbDays++){
+			GildedRose.updateQuality(items1);
+			GildedRose.updateQuality(items2);
+			GildedRose.updateQuality(items3);
+			GildedRose.updateQuality(items4);
+			GildedRose.updateQuality(items5);
+			GildedRose.updateQuality(items6);
 	}
+	
+		assertEquals(items1.getQuality() ,0 );
+		assertEquals(items2.getQuality() ,50 );
+		assertEquals(items3.getQuality() ,0 );
+		assertEquals(items4.getQuality() ,80 );
+		assertEquals(items5.getQuality() ,0);
+		assertEquals(items6.getQuality() ,0 );
+	}
+}
